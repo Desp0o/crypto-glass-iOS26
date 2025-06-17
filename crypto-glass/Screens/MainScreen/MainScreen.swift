@@ -9,8 +9,6 @@ import SwiftUI
 
 struct MainScreen: View {
   @State private var vm = MainScreenViewModel()
-  
-  
     var body: some View {
       GlassEffectContainer {
         ZStack {
@@ -28,9 +26,7 @@ struct MainScreen: View {
           ScrollView {
             VStack(alignment: .leading) {
               Text("Trending collections")
-                .multilineTextAlignment(.leading)
-                .fontWeight(.bold)
-                .font(.system(size: 22))
+                .customStyle(size: 22, weight: .bold)
                 .padding(.leading, 20)
               
               ScrollView(.horizontal) {
@@ -46,7 +42,7 @@ struct MainScreen: View {
                     
                     HStack {
                       Text("Abstract Art")
-                        .fontWeight(.bold)
+                        .customStyle(weight: .bold)
                       
                       Spacer()
                     }
@@ -66,7 +62,7 @@ struct MainScreen: View {
                     
                     HStack {
                       Text("Abstract Art")
-                        .fontWeight(.bold)
+                        .customStyle(weight: .bold)
                       
                       Spacer()
                     }
