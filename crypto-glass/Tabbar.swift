@@ -10,11 +10,11 @@ import SwiftUI
 struct Tabbar: View {
     var body: some View {
       TabView {
-        Tab("Home",systemImage: "house") {
+        Tab("Home",systemImage: IconEnum.house.rawValue) {
           MainScreen()
         }
         
-        Tab("Coins", systemImage: "chart.bar") {
+        Tab("Coins", systemImage: IconEnum.chart.rawValue) {
           CryptoPrices()
         }
         
@@ -22,5 +22,6 @@ struct Tabbar: View {
           Search()
         }
       }
+      .tint(.purple)
     }
 }
