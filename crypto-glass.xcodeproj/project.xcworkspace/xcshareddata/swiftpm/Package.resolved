@@ -1,0 +1,15 @@
+{
+  "originHash" : "a0e3f8e2650e911b83774e067d6395373872b99aee8560aa0f3f2e20fd26b393",
+  "pins" : [
+    {
+      "identity" : "izzirequest",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Desp0o/izziRequest.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4e2d8396c0c76fa6cb7da17d278f78ae9214ac32"
+      }
+    }
+  ],
+  "version" : 3
+}
