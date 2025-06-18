@@ -14,11 +14,15 @@ struct LatestCrypto: Codable {
   let id: Int
   let name: String
   let symbol: String
+  let circulatingSupply: Double
+  let totalSupply: Double
+  let maxSupply: Double?
   let quote: Quote
 }
 
 struct USD: Codable {
   let price: Double
+  let percentChange24H: Double
 }
 
 struct Quote: Codable {

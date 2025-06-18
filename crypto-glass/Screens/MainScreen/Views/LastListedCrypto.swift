@@ -43,6 +43,10 @@ struct LastListedCrypto: View {
               }
               .padding(10)
               .glassEffect(in: RoundedRectangle(cornerRadius: 22))
+              .onTapGesture {
+                vm.selectedCrypto = crypto
+                vm.isVisible = true
+              }
             }
           }
           .padding(.horizontal, 20)
@@ -59,7 +63,7 @@ struct LastListedCrypto: View {
                   .scaleEffect(1.5)
                   .tint(.elipse2Col)
               }
-              .frame(width: 180, height: 100)
+              .frame(width: 180, height: 90)
               .glassEffect(in: RoundedRectangle(cornerRadius: 22))
             }
           }
@@ -69,3 +73,4 @@ struct LastListedCrypto: View {
     }
   }
 }
+

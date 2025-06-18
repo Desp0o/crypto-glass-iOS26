@@ -8,4 +8,6 @@
 enum IconEnum: String {
   case house
   case chart = "chart.bar"
+  case arrowDown = "arrowtriangle.down.fill"
+  case arrowUp = "arrowtriangle.up.fill"
 }

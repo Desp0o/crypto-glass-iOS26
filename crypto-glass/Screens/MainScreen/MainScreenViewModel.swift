@@ -12,11 +12,14 @@ import IzziRequest
 @Observable
 final class MainScreenViewModel {
   private let izzReq: IzziRequestProtocol
-  var isLoading: Bool = true
   private let apiLatest = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10"
   private let headers = ["X-CMC_PRO_API_KEY": "6a830d09-6bcb-448a-81e4-e204ada3046c"]
+  
   var latestListedCrypto: [LatestCrypto] = []
-
+  var selectedCrypto: LatestCrypto? = nil
+  var isVisible = false
+  var isLoading: Bool = true
+  
   let nfts = [
     NFTModel(name: "abstract", cover: "abstract"),
     NFTModel(name: "metaverse", cover: "metaverse"),
@@ -27,13 +30,9 @@ final class MainScreenViewModel {
   
   init(izzReq: IzziRequestProtocol = IzziRequest()) {
     self.izzReq = izzReq
-    
-    fetchLatest()
   }
   
-  
-
-   func fetchLatest() {
+  func fetchLatest() {
     Task {
       defer {
         isLoading = false
