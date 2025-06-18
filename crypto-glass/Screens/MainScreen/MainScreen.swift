@@ -15,13 +15,11 @@ struct MainScreen: View {
         BlurEllipses()
         
         ScrollView {
-          VStack {
+          VStack(spacing: 30) {
             
             NFTView(vm: vm)
-          }
-          
-          if vm.isLoading {
-            ProgressView()
+            LastListedCrypto(vm: vm)
+            
           }
         }
       }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E32EBC432E01F24900866B7C /* IzziRequest in Frameworks */ = {isa = PBXBuildFile; productRef = E32EBC422E01F24900866B7C /* IzziRequest */; };
+		E3FA28432E0301790098C63F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E3FA28422E0301790098C63F /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3FA28432E0301790098C63F /* Kingfisher in Frameworks */,
 				E32EBC432E01F24900866B7C /* IzziRequest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = "crypto-glass";
 			packageProductDependencies = (
 				E32EBC422E01F24900866B7C /* IzziRequest */,
+				E3FA28422E0301790098C63F /* Kingfisher */,
 			);
 			productName = "crypto-glass";
 			productReference = E3EA2D9F2E01BFA200C7DB87 /* crypto-glass.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E32EBC412E01F24900866B7C /* XCRemoteSwiftPackageReference "izziRequest" */,
+				E3FA28412E0301790098C63F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E3EA2DA02E01BFA200C7DB87 /* Products */;
@@ -349,6 +353,14 @@
 				kind = branch;
 			};
 		};
+		E3FA28412E0301790098C63F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -356,6 +368,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E32EBC412E01F24900866B7C /* XCRemoteSwiftPackageReference "izziRequest" */;
 			productName = IzziRequest;
+		};
+		E3FA28422E0301790098C63F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3FA28412E0301790098C63F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
