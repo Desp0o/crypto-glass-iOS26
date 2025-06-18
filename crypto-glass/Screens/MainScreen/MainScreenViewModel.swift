@@ -7,11 +7,16 @@
 
 import Observation
 import IzziRequest
-import Foundation
 
-final class MainScreenViewModel: Observable {
-  let izziReq: IzziRequestProtocol
-  
+@MainActor
+@Observable
+final class MainScreenViewModel {
+  private let izzReq: IzziRequestProtocol
+  var isLoading: Bool = true
+  private let apiLatest = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10"
+  private let headers = ["X-CMC_PRO_API_KEY": "6a830d09-6bcb-448a-81e4-e204ada3046c"]
+  var latestListedCrypto: [LatestCrypto] = []
+
   let nfts = [
     NFTModel(name: "abstract", cover: "abstract"),
     NFTModel(name: "metaverse", cover: "metaverse"),
@@ -20,37 +25,38 @@ final class MainScreenViewModel: Observable {
     NFTModel(name: "vawe", cover: "vawe")
   ]
   
-  init(izziReq: IzziRequestProtocol = IzziRequest()) {
-    self.izziReq = izziReq
+  init(izzReq: IzziRequestProtocol = IzziRequest()) {
+    self.izzReq = izzReq
+    
+    fetchLatest()
   }
   
-  let api = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map"
-  let headers = [
-      "X-CMC_PRO_API_KEY": "6a830d09-6bcb-448a-81e4-e204ada3046c"
-  ]
+  
 
-    
-  func foo() {
-      Task {
-        do {
-          let response: ResponseDataModel =  try await izziReq.request(
-            urlString: api,
-            method: .GET,
-            headers: headers
-          )
-          print("🟢")
-          print(response.data[0].name)
-        } catch {
-          print(error)
-        }
+   func fetchLatest() {
+    Task {
+      defer {
+        isLoading = false
+      }
+      
+      do {
+        let response: LatestResponseModel = try await izzReq.request(urlString: apiLatest, method: .GET, headers: headers)
+        latestListedCrypto = response.data
+      } catch {
+        print(error)
       }
     }
+  }
 }
 
 
 
-struct NFTModel: Identifiable {
-  let id = UUID()
-  let name: String
-  let cover: String
-}
+
+
+
+
+//https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest
+//https://pro-api.coinmarketcap.com/v1/cryptocurrency/map
+
+
+
