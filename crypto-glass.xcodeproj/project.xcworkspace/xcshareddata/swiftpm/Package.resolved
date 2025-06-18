@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Desp0o/izziRequest.git",
       "state" : {
-        "branch" : "fix/getmethod",
-        "revision" : "a964fc081cf752cc760d3dfea8a47d7fd03adab1"
+        "branch" : "main",
+        "revision" : "c933e02bd8f45ffe739465af18c0c7fdb532e576"
       }
     },
     {

@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MainScreen: View {
   @State private var vm = MainScreenViewModel()
+  @Namespace private var namespace
+  @Namespace private var namespace2
+  
+  @State private var show = false
   
   var body: some View {
     GlassEffectContainer {
+      Button("show") {
+        show.toggle()
+      }
+      
       ZStack {
         BlurEllipses()
         
@@ -19,6 +28,7 @@ struct MainScreen: View {
           VStack(spacing: 30) {
             NFTView(vm: vm)
             LastListedCrypto(vm: vm)
+            NewsFeed(vm: vm)
           }
         }
       }
@@ -32,6 +42,7 @@ struct MainScreen: View {
     }
     .task {
       vm.fetchLatest()
+      vm.fetchNews()
     }
   }
 }

@@ -13,9 +13,11 @@ import IzziRequest
 final class MainScreenViewModel {
   private let izzReq: IzziRequestProtocol
   private let apiLatest = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10"
+  private let newsApi = "https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&pageSize=10&apiKey=815bdd179bed438aa183f4d2a6ff264f"
   private let headers = ["X-CMC_PRO_API_KEY": "6a830d09-6bcb-448a-81e4-e204ada3046c"]
   
   var latestListedCrypto: [LatestCrypto] = []
+  var newsFeed: [Article] = []
   var selectedCrypto: LatestCrypto? = nil
   var isVisible = false
   var isLoading: Bool = true
@@ -46,6 +48,21 @@ final class MainScreenViewModel {
       }
     }
   }
+  
+  func fetchNews() {
+    Task {
+      defer {
+        isLoading = false
+      }
+      
+      do {
+        let response: NewsResponseModel = try await izzReq.request(urlString: newsApi, method: .GET, headers: headers)
+        newsFeed = response.articles
+      } catch {
+        print(error)
+      }
+    }
+  }
 }
 
 
@@ -56,6 +73,6 @@ final class MainScreenViewModel {
 
 //https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest
 //https://pro-api.coinmarketcap.com/v1/cryptocurrency/map
-
+//https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&pageSize=10&apiKey=815bdd179bed438aa183f4d2a6ff264f
 
 
