@@ -7,9 +7,18 @@
 
 import Observation
 import IzziRequest
+import Foundation
 
 final class MainScreenViewModel: Observable {
   let izziReq: IzziRequestProtocol
+  
+  let nfts = [
+    NFTModel(name: "abstract", cover: "abstract"),
+    NFTModel(name: "metaverse", cover: "metaverse"),
+    NFTModel(name: "pink", cover: "pink"),
+    NFTModel(name: "portrait", cover: "portrait"),
+    NFTModel(name: "vawe", cover: "vawe")
+  ]
   
   init(izziReq: IzziRequestProtocol = IzziRequest()) {
     self.izziReq = izziReq
@@ -36,9 +45,12 @@ final class MainScreenViewModel: Observable {
         }
       }
     }
-
-  
 }
 
 
 
+struct NFTModel: Identifiable {
+  let id = UUID()
+  let name: String
+  let cover: String
+}

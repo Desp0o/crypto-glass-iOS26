@@ -22,48 +22,33 @@ struct MainScreen: View {
             
             ScrollView(.horizontal) {
               LazyHStack(spacing: 20) {
-                VStack(spacing: 10) {
-                  HStack {
-                    Image("abstract")
-                      .frame(width: 150, height: 150)
-                      .clipShape(RoundedRectangle(cornerRadius: 22))
+                ForEach(vm.nfts, id: \.id) { nft in
+                  VStack(spacing: 10) {
+                    HStack {
+                      Image(nft.cover)
+                        .frame(width: 150, height: 150)
+                        .clipShape(RoundedRectangle(cornerRadius: 22))
+                      
+                      Spacer()
+                    }
                     
-                    Spacer()
-                  }
-                  
-                  HStack {
-                    Text("Abstract Art")
-                      .customStyle(weight: .bold)
+                    HStack {
+                      Text(nft.name)
+                        .customStyle(weight: .bold)
+                      
+                      Spacer()
+                    }
                     
-                    Spacer()
                   }
-                  
+                  .padding(10)
+                  .glassEffect(in: RoundedRectangle(cornerRadius: 22))
                 }
-                .padding(10)
-                .glassEffect(in: RoundedRectangle(cornerRadius: 22))
-                
-                VStack(spacing: 10) {
-                  HStack {
-                    Image("abstract")
-                      .frame(width: 150, height: 150)
-                      .clipShape(RoundedRectangle(cornerRadius: 22))
-                    
-                    Spacer()
-                  }
-                  
-                  HStack {
-                    Text("Abstract Art")
-                      .customStyle(weight: .bold)
-                    
-                    Spacer()
-                  }
-                  
-                }
-                .padding(10)
-                .glassEffect(in: RoundedRectangle(cornerRadius: 22))
               }
               .padding(.leading, 20)
+              .scrollTargetLayout()
             }
+            .scrollIndicators(.hidden)
+            .scrollTargetBehavior(.viewAligned)
           }
         }
       }
