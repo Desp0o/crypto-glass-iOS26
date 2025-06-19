@@ -31,6 +31,10 @@ struct Search: View {
               .customStyle(size: 22, weight: .bold)
           }
           
+          if vm.foundCrypto == nil {
+              Text("Search Coin")
+              .customStyle(size: 20, weight: .bold)
+          }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
       }

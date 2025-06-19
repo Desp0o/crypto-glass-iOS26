@@ -29,7 +29,6 @@ final class SearchViewModel {
       do {
         let response: LatestResponseModel = try await izziReq.request(urlString: api, method: .GET, headers: headers)
         fetchedCryptos = response.data
-        print(fetchedCryptos)
       } catch {
         print(error)
       }
