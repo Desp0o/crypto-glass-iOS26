@@ -12,11 +12,15 @@ struct Tabbar: View {
     var body: some View {
       TabView {
         Tab("Home",systemImage: IconEnum.house.rawValue) {
-          MainScreen()
+          NavigationStack {
+            MainScreen()
+          }
         }
         
         Tab("Coins", systemImage: IconEnum.chart.rawValue) {
-          CryptoPrices()
+          NavigationStack {
+            CryptoPrices()
+          }
         }
         
         Tab(role: .search) {
