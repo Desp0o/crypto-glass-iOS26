@@ -24,16 +24,10 @@ struct NewsFeed: View {
         HStack(spacing: 20) {
           ForEach(vm.newsFeed.enumerated(), id: \.offset) { index, news in
             VStack {
-              
               if show && selectedIndex == index {
                 VStack {
                   NavigationLink {
-                    NewsScreen()
-                      .onDisappear {
-                        withAnimation {
-                          selectedIndex = -1
-                        }
-                      }
+                    NewsScreen(news: news)
                   } label: {
                     Text("Read")
                       .customStyle(color: .pink)
@@ -42,7 +36,6 @@ struct NewsFeed: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 .glassEffect()
-                
               }
               
               VStack(spacing: 10) {
@@ -54,9 +47,10 @@ struct NewsFeed: View {
                   .clipped()
                   .clipShape(RoundedRectangle(cornerRadius: 22))
                 
-                
-                Text(news.title?.prefix(33) ?? "")
-                  .customStyle(weight: .semibold)
+                if let title = news.title {
+                  Text(title.count > 30 ? "\(title.prefix(33))..." : "title")
+                    .customStyle(weight: .semibold)
+                }
               }
               
               .padding(20)

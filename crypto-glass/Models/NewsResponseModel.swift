@@ -15,5 +15,5 @@ struct Article: Codable, Hashable {
   let author: String?
   let title: String?
   let urlToImage: String?
-  let content: String?
+  let description: String?
 }
