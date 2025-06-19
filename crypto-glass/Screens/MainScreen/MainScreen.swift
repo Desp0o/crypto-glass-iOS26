@@ -10,17 +10,9 @@ import Kingfisher
 
 struct MainScreen: View {
   @State private var vm = MainScreenViewModel()
-  @Namespace private var namespace
-  @Namespace private var namespace2
-  
-  @State private var show = false
   
   var body: some View {
     GlassEffectContainer {
-      Button("show") {
-        show.toggle()
-      }
-      
       ZStack {
         BlurEllipses()
         
@@ -32,13 +24,14 @@ struct MainScreen: View {
           }
         }
       }
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-      .padding(.top, 20)
-      .background(.bgCol)
-      .sheet(isPresented: $vm.isVisible) {
-        CryptoDetail(vm: vm)
-          .presentationDetents([.medium])
-      }
+      .scrollIndicators(.hidden)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    .padding(.top, 20)
+    .background(.bgCol)
+    .sheet(isPresented: $vm.isVisible) {
+      CryptoDetail(vm: vm)
+        .presentationDetents([.medium])
     }
     .task {
       vm.fetchLatest()

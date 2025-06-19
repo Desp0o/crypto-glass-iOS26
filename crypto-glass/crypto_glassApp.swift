@@ -11,7 +11,9 @@ import SwiftUI
 struct crypto_glassApp: App {
     var body: some Scene {
         WindowGroup {
+          NavigationStack {
             Tabbar()
+          }
         }
     }
 }
